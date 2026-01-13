@@ -1,56 +1,136 @@
+# GigFlow – Mini Freelance Marketplace Platform
 
-# GigFlow - Freelance Marketplace
+GigFlow is a full-stack freelance marketplace where users can post jobs (Gigs) and freelancers can apply (Bids). 
+Clients can review bids and hire one freelancer using a secure hiring workflow.
 
-GigFlow is a minimal, production-ready freelance marketplace built for the ServiceHive hiring assignment. It allows clients to post gigs and freelancers to bid on them, featuring a robust transactional hiring system.
+This project was built as part of the ServiceHive Full Stack Development Internship Assignment.
 
-## 🚀 Tech Stack
+---
 
-- **Frontend:** React 19, Tailwind CSS, TypeScript
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB (Mongoose)
-- **Authentication:** JWT with HttpOnly Cookies (Secure & XSS-resistant)
-- **Architecture:** Atomic Transactions for multi-document updates
+## 🚀 Live Project
 
-## ✨ Key Features
+Frontend: https://your-frontend-link  
+Backend: https://your-backend-link  
 
-- **Transactional Hiring:** When a client hires a freelancer, the system atomically updates the gig status and rejects all other competing bids using MongoDB Sessions.
-- **Role-Based UI:** Dynamic interfaces for Clients (Hirers) and Freelancers (Experts).
-- **Human-Centric Design:** Conversational language and Local Currency (INR ₹) implementation.
-- **Secure Auth:** JWT session management handled server-side for maximum security.
+Demo Video (Loom): https://your-loom-link  
 
-## 🛠️ Setup Instructions
+---
 
-### 1. Clone & Install
-```bash
-git clone <your-repo>
-cd gigflow
+## 🛠 Tech Stack
+
+Frontend: React (Vite) + TypeScript + Tailwind CSS  
+Backend: Node.js + Express.js  
+Database: MongoDB (Mongoose)  
+Authentication: JWT with HttpOnly Cookies  
+State Management: Context API / Redux Toolkit  
+
+---
+
+## 🔑 Core Features
+
+- Secure user authentication (Signup & Login)
+- Post and browse gigs
+- Search gigs by title
+- Bid on gigs as a freelancer
+- View all bids for your posted gig
+- Hire a freelancer
+- Automatic rejection of other bids
+- Role-free system (any user can be client or freelancer)
+
+---
+
+## 🧠 Hiring Workflow
+
+1. A user posts a gig.
+2. Other users submit bids.
+3. The gig owner reviews bids.
+4. The owner clicks “Hire” on one bid.
+5. The gig becomes assigned.
+6. The selected freelancer is hired.
+7. All other bids are automatically rejected.
+
+This logic is handled atomically to ensure data consistency.
+
+---
+
+## 🗂️ API Endpoints
+
+| Method | Endpoint |
+|--------|---------|
+| POST | /api/auth/register |
+| POST | /api/auth/login |
+| GET | /api/gigs |
+| POST | /api/gigs |
+| POST | /api/bids |
+| GET | /api/bids/:gigId |
+| PATCH | /api/bids/:bidId/hire |
+
+---
+
+## 🗄 Database Models
+
+User  
+- name  
+- email  
+- password  
+
+Gig  
+- title  
+- description  
+- budget  
+- ownerId  
+- status (open, assigned)  
+
+Bid  
+- gigId  
+- freelancerId  
+- message  
+- status (pending, hired, rejected)  
+
+---
+
+## ⚙️ Setup Instructions
+
+1. Clone the repository  
+git clone <repo-url>
+
+markdown
+Copy code
+
+2. Install dependencies  
 npm install
-```
 
-### 2. Environment Variables
-Create a `.env` file in the root:
-```env
-PORT=5000
-MONGO_URI=your_mongodb_atlas_uri
-JWT_SECRET=your_random_string
-NODE_ENV=development
-FRONTEND_URL=http://localhost:3000
-```
+markdown
+Copy code
 
-### 3. Run Locally
-```bash
-# Start Backend
-node server.js
+3. Add environment variables  
+Create a `.env` file using `.env.example`
 
-# Start Frontend (in another terminal)
+4. Start backend  
+npm run server
+
+markdown
+Copy code
+
+5. Start frontend  
 npm run dev
-```
 
-## 🌍 Deployment
+yaml
+Copy code
 
-- **Backend:** Deploy `server.js` to **Render** or **Railway**.
-- **Frontend:** Deploy to **Vercel** or **Netlify**.
-- **Database:** Use a free **MongoDB Atlas** cluster.
+---
 
-## 🎥 Demo Video Script
-Included in the application dashboard under the "Watch Demo" section.
+## 🔐 Environment Variables
+
+See `.env.example` for required keys:
+- MONGO_URI
+- JWT_SECRET
+- FRONTEND_URL
+
+---
+
+## 📌 Author
+
+Pratik Kamble  
+Full Stack Developer Intern Applicant  
+ServiceHive Assignment – GigFlow
