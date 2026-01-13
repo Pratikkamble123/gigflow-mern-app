@@ -1,0 +1,9 @@
+
+{
+  "name": "GigFlow Full-Stack Marketplace",
+  "description": "A production-grade freelance marketplace with JWT auth, HttpOnly cookies, and atomic MongoDB transactions for hiring.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
